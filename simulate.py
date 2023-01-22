@@ -10,12 +10,22 @@ CS206: Evolutionary Robotics
 # imports
 import pybullet as p
 import time
+import pybullet_data
 
 # create physics client
 physicsClient = p.connect(p.GUI)
 
+# get data path to access .urdf file for 'floor'
+p.setAdditionalSearchPath(pybullet_data.getDataPath())
+
+# establish gravity
+p.setGravity(0,0,-9.8)
+
+# add a 'floor' to the world for the box to fall onto
+planeId = p.loadURDF("plane.urdf")
+
 # read in described world
-p.loadSDF("box.sdf")
+p.loadSDF("boxes.sdf")
 
 # update simulation across 1000 time steps
 for i in range(1000):
