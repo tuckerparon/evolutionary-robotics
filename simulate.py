@@ -6,4 +6,5 @@ CS206: Evolutionary Robotics
 @author: tuckerparon
 """
 
+import pybullet as p
 pass
