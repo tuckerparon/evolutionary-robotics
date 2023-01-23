@@ -23,9 +23,10 @@ p.setGravity(0,0,-9.8)
 
 # add a 'floor' to the world for the box to fall onto
 planeId = p.loadURDF("plane.urdf")
+robotId = p.loadURDF("body.urdf")
 
 # read in described world
-p.loadSDF("boxes.sdf")
+p.loadSDF("world.sdf")
 
 # update simulation across 1000 time steps
 for i in range(1000):
