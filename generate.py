@@ -44,16 +44,16 @@ def Create_Robot():
     pyrosim.Send_Cube(name="Torso", pos=[0, 1, 1.5] , size = [length, width, height])
     
     # create link between 0 and 1
-    pyrosim.Send_Joint( name = "Torso_BackLeg" , parent= "Torso" , child = "BackLeg" , type = "revolute", position = [0, .5, 1])
+    pyrosim.Send_Joint(name = "Torso_BackLeg" , parent= "Torso" , child = "BackLeg" , type = "revolute", position = [-.5, 1, 1])
 
     # create link 1
-    pyrosim.Send_Cube(name="BackLeg", pos=[0, -.5, -.5] , size = [length, width, height])
+    pyrosim.Send_Cube(name="BackLeg", pos=[-.5, 0, -.5] , size = [length, width, height])
         
     # create link between 1 and 2
-    pyrosim.Send_Joint( name = "Torso_FrontLeg" , parent= "Torso" , child = "FrontLeg" , type = "revolute", position = [0, 1.5, 1])
+    pyrosim.Send_Joint( name = "Torso_FrontLeg" , parent= "Torso" , child = "FrontLeg" , type = "revolute", position = [.5, 1, 1])
 
     # create link 2
-    pyrosim.Send_Cube(name="FrontLeg", pos=[0, .5, -.5] , size = [length, width, height])
+    pyrosim.Send_Cube(name="FrontLeg", pos=[.5, 0, -.5] , size = [length, width, height])
     
     # end
     pyrosim.End()
