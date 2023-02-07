@@ -12,6 +12,8 @@ from sensor import SENSOR
 from motor import MOTOR
 import pyrosim.pyrosim as pyrosim
 import pybullet as p
+import constants as c
+from pyrosim.neuralNetwork import NEURAL_NETWORK
 
 # robot.py
 class ROBOT:
