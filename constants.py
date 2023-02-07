@@ -15,6 +15,14 @@ amplitude = .4
 frequency = 20
 phaseOffset = 0
 
+# create world variables
+length = 1
+width = 1
+height = 1
+x = -5
+y = -5
+z = .50
+
 # simulation time steps
 time_steps = 1000
 
