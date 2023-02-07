@@ -15,17 +15,8 @@ def Create_World():
     # store file
     pyrosim.Start_SDF("world.sdf")
 
-    # declare variables
-    length = 1
-    width = 1
-    height = 1
-    
-    x = -5
-    y = -5
-    z = .50
-
     # create box
-    pyrosim.Send_Cube(name="Box", pos=[x, y, z] , size = [length, width, height])
+    pyrosim.Send_Cube(name="Box", pos=[c.x, c.y, c.z] , size = [c.length, c.width, c.height])
     
     # close file
     pyrosim.End()
