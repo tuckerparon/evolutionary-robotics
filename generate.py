@@ -9,6 +9,7 @@ CS206: Evolutionary Robotics
 
 # imports
 import pyrosim.pyrosim as pyrosim
+import constants as c
 
 def Create_World():
     
