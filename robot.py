@@ -20,6 +20,7 @@ class ROBOT:
         # for sensor and motor values
         self.sensors = {}
         self.motors = {}
+        self.values = {}
 
         # set up robot
         self.robot = p.loadURDF("body.urdf")
@@ -28,6 +29,9 @@ class ROBOT:
         # get ready to sense and act
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
+        
+        # set up brain
+        self.nn = NEURAL_NETWORK("brain.nndf")
 
     def Prepare_To_Sense(self):
 
@@ -38,21 +42,22 @@ class ROBOT:
     def Sense(self, t):
 
         # get sensor value for each link at each time step
-        for i, s in enumerate(self.sensors.values()):
-            s.Get_Value(t)
+        for key in self.sensors:
+            self.values[t] = self.sensors[key].Get_Value(t)
 
     def Prepare_To_Act(self):
 
         # fill in motor values (as value) for each joint (as key)
         for jointName in pyrosim.jointNamesToIndices:
-            print(jointName)
             self.motors[jointName] = MOTOR(jointName)
 
     def Act(self, t):
 
-        # get motor value for each joint at each time step
-        for i, m in enumerate(self.motors.values()):
-            m.Set_Value(self.robot, t)
+        for neuronName in self.nn.Get_Neuron_Names():
+            if self.nn.Is_Motor_Neuron(neuronName):
+                jointName = self.nn.Get_Motor_Neurons_Joint(neuronName)
+                desiredAngle = self.nn.Get_Value_Of(neuronName)
+                self.motors[jointName].Set_Value(self.robot, desiredAngle)
 
     def Save_Values(self):
 
@@ -62,5 +67,10 @@ class ROBOT:
 
         for key in self.motors:
             self.motors[key].Save_Values()
+            
+
+    def Think(self):
+        self.nn.Update()
+        self.nn.Print()
 
 
