@@ -11,7 +11,7 @@ CS206: Evolutionary Robotics
 import numpy
 
 # front leg angle/motor variables
-amplitude = .4
+amplitude = numpy.pi / 4
 frequency = 20
 phaseOffset = 0
 
