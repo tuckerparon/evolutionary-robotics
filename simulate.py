@@ -9,7 +9,12 @@ CS206: Evolutionary Robotics
 
 # imports
 from simulation import SIMULATION
+import sys
+
+# store GUI/DIRECT variable
+directOrGUI = sys.argv[1]
 
 # start simulation
-simulation = SIMULATION()
+simulation = SIMULATION(directOrGUI)
 simulation.run()
+simulation.Get_Fitness()
