@@ -25,8 +25,8 @@ class SENSOR:
 
         # get values at each time step and print final vectors
         self.values[t] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName) # sensor values
-        if t == c.time_steps-1:
-            print(self.values)
+        #if t == c.time_steps-1:
+        #    print(self.values)
 
     def Save_Values(self):
 
