@@ -28,3 +28,6 @@ time_steps = 1000
 
 # target angles
 targetAngles = (numpy.sin(numpy.linspace(0, 2*numpy.pi, time_steps)) * numpy.pi / 4) # scale them by pi/4
+
+# number of generation
+numberOfGenerations = 10
