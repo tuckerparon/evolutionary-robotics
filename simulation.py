@@ -16,7 +16,7 @@ from world import WORLD
 from robot import ROBOT
 
 class SIMULATION:
-    def __init__(self):
+    def __init__(self, directOrGUI):
         
         # check run type
         if directOrGUI == 'DIRECT':
