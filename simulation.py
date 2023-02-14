@@ -18,8 +18,11 @@ from robot import ROBOT
 class SIMULATION:
     def __init__(self):
         
-        # create physics client
-        self.physicsClient = p.connect(p.GUI)
+        # check run type
+        if directOrGUI == 'DIRECT':
+            p.connect(p.DIRECT)
+        else:
+            p.connect(p.GUI)
 
         # get data path to access .urdf file for 'floor'
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
@@ -35,13 +38,15 @@ class SIMULATION:
 
         # step through simulation by sensing and acting
         for t in range(c.time_steps):
-            print(t)
+            #print(t)
             time.sleep(1/60)
             p.stepSimulation()
             self.robot.Sense(t)
             self.robot.Think()
             self.robot.Act()
 
+    def Get_Fitness(self):
+        self.robot.Get_Fitness()
 
     def __del__(self):
 
