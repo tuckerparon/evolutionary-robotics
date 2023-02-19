@@ -19,9 +19,9 @@ phaseOffset = 0
 length = 1
 width = 1
 height = 1
-x = -5
-y = -5
-z = .50
+x = 0
+y = 0
+z = 1
 
 # simulation time steps
 time_steps = 1000
@@ -37,3 +37,8 @@ populationSize = 10
 
 # sleep rate
 sleepRate = 1/60
+
+numSensorNeurons = 9
+numMotorNeurons = 8
+
+motorJointRange = .2
