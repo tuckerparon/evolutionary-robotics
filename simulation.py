@@ -16,8 +16,11 @@ from world import WORLD
 from robot import ROBOT
 
 class SIMULATION:
-    def __init__(self, directOrGUI):
-        
+    def __init__(self, directOrGUI, solutionID):
+
+        self.directOrGUI = directOrGUI
+        self.solutionID = solutionID
+
         # check run type
         if directOrGUI == 'DIRECT':
             p.connect(p.DIRECT)
@@ -32,18 +35,19 @@ class SIMULATION:
 
         # establish world and robot
         self.world = WORLD()
-        self.robot = ROBOT()
+        self.robot = ROBOT(self.solutionID)
 
     def run(self):
 
         # step through simulation by sensing and acting
         for t in range(c.time_steps):
             #print(t)
-            time.sleep(1/60)
             p.stepSimulation()
             self.robot.Sense(t)
             self.robot.Think()
             self.robot.Act()
+            if self.directOrGUI == 'GUI':
+                time.sleep(c.sleepRate)
 
     def Get_Fitness(self):
         self.robot.Get_Fitness()

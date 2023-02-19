@@ -31,3 +31,9 @@ targetAngles = (numpy.sin(numpy.linspace(0, 2*numpy.pi, time_steps)) * numpy.pi 
 
 # number of generation
 numberOfGenerations = 10
+
+# population size
+populationSize = 10
+
+# sleep rate
+sleepRate = 1/60
