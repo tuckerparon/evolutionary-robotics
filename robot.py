@@ -35,7 +35,7 @@ class ROBOT:
         # get ready to sense and act
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
-        
+
         # set up brain
         self.nn = NEURAL_NETWORK("brain" + solutionID + ".nndf")
 
@@ -75,13 +75,13 @@ class ROBOT:
 
         for key in self.motors:
             self.motors[key].Save_Values()
-            
+
 
     def Think(self):
         self.nn.Update()
         #self.nn.Print()
-        
-    
+
+
     def Get_Fitness(self):
         stateOfLinkZero = p.getLinkState(self.robot,0)
         #print(stateOfLinkZero)

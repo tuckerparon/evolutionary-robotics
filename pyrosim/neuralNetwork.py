@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Neural Network
+CS 206: Evolutionary Robotics
+
+@author: tuckerparon
+"""
+
 from pyrosim.neuron  import NEURON
 
 from pyrosim.synapse import SYNAPSE

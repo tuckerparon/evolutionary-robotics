@@ -13,6 +13,12 @@ import copy
 import os
 import sys
 
+from solution import SOLUTION
+import constants as c
+import copy
+import os
+import sys
+
 class PARALLEL_HILL_CLIMBER:
     def __init__(self):
         os.system("rm brain*.nndf") # remove temporary brain files
@@ -78,3 +84,4 @@ class PARALLEL_HILL_CLIMBER:
         for i in range(len(solutions)):
             solutions[i].Wait_For_Simulation_To_End()
 
+#%%

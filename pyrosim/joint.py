@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Joint
+CS 206: Evolutionary Robotics
+
+@author: tuckerparon
+"""
+
 from pyrosim.commonFunctions import Save_Whitespace
 
 class JOINT: 

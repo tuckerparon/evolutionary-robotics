@@ -59,17 +59,21 @@ def Generate_Brain():
     
     pyrosim.Send_Motor_Neuron( name = 3 , jointName = "Torso_BackLeg")
     pyrosim.Send_Motor_Neuron( name = 4 , jointName = "Torso_FrontLeg")
-    
-    #pyrosim.Send_Synapse( sourceNeuronName = 0 , targetNeuronName = 3 , weight = -1.0 )
-    #pyrosim.Send_Synapse( sourceNeuronName = 1 , targetNeuronName = 3 , weight = -1.0)
-    #pyrosim.Send_Synapse( sourceNeuronName = 0 , targetNeuronName = 4 , weight = -1.0)
-    #pyrosim.Send_Synapse( sourceNeuronName = 1 , targetNeuronName = 4 , weight = -1.0)
-    
-    # loop over sensor neurons
-    for i in range(5):
-        # loop over the motors
-        for j in [3, 4]:
-            pyrosim.Send_Synapse(sourceNeuronName = i, targetNeuronName = j, weight = random.uniform(-1.0, 1.0))
+
+    # create hidden neurons
+    pyrosim.Send_Hidden_Neuron(name = 5)
+
+    # create synapses from input neurons to hidden neuron
+    pyrosim.Send_Synapse(sourceNeuronName = 0, targetNeuronName = 5, weight = 1.0)
+    pyrosim.Send_Synapse(sourceNeuronName = 1, targetNeuronName = 5, weight = -1.0)
+    pyrosim.Send_Synapse(sourceNeuronName = 2, targetNeuronName = 5, weight = 1.0)
+
+    # create synapses from hidden neuron to output neurons
+    pyrosim.Send_Synapse(sourceNeuronName = 5, targetNeuronName = 3, weight = 1.0)
+    pyrosim.Send_Synapse(sourceNeuronName = 5, targetNeuronName = 4, weight = 1.0)
+
+    # create recurrent synapses in the hidden layer
+    pyrosim.Send_Synapse(sourceNeuronName = 5, targetNeuronName = 5, weight = 0.1, delay = 1)
 
     # end
     pyrosim.End()

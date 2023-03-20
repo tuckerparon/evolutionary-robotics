@@ -30,10 +30,10 @@ time_steps = 1000
 targetAngles = (numpy.sin(numpy.linspace(0, 2*numpy.pi, time_steps)) * numpy.pi / 4) # scale them by pi/4
 
 # number of generation
-numberOfGenerations = 10
+numberOfGenerations = 1
 
 # population size
-populationSize = 10
+populationSize = 1
 
 # sleep rate
 sleepRate = 1/60

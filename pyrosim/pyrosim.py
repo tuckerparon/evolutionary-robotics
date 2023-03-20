@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Pyrosim
+CS 206: Evolutionary Robotics
+
+@author: tuckerparon
+"""
+
 import pybullet as p
 
 from pyrosim.nndf import NNDF
