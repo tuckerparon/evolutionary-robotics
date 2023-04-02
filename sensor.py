@@ -4,7 +4,6 @@
 Sensor
 CS 206: Evolutionary Robotics
 
-
 @author: tuckerparon
 """
 

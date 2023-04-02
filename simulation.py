@@ -16,10 +16,11 @@ from world import WORLD
 from robot import ROBOT
 
 class SIMULATION:
-    def __init__(self, directOrGUI, solutionID):
+    def __init__(self, directOrGUI, solutionID, gait):
 
         self.directOrGUI = directOrGUI
         self.solutionID = solutionID
+        self.gait = gait
 
         # check run type
         if directOrGUI == 'DIRECT':
@@ -50,7 +51,7 @@ class SIMULATION:
                 time.sleep(c.sleepRate)
 
     def Get_Fitness(self):
-        self.robot.Get_Fitness()
+        self.robot.Get_Fitness(self.gait)
 
     def __del__(self):
 

@@ -4,7 +4,6 @@
 Robot
 CS 206: Evolutionary Robotics
 
-
 @author: tuckerparon
 """
 
@@ -82,14 +81,37 @@ class ROBOT:
         #self.nn.Print()
 
 
-    def Get_Fitness(self):
+    def Get_Fitness(self, gait):
         stateOfLinkZero = p.getLinkState(self.robot,0)
-        #print(stateOfLinkZero)
         positionOfLinkZero = stateOfLinkZero[0]
         xCoordinateOfLinkZero = positionOfLinkZero[0]
+        yCoordinateOfLinkZero = positionOfLinkZero[2]
+
+        # Calculate the stability of the robot
+        totalMass = 0
+        totalLinkDist = 0
+        for linkIndex in range(1, p.getNumJoints(self.robot)):
+            linkState = p.getLinkState(self.robot, linkIndex) # position, orientation, velo., etc.
+            linkPosition = linkState[0] # position
+            linkMass = p.getDynamicsInfo(self.robot, linkIndex)[0] # mass
+            linkDist = abs(linkPosition[0] - positionOfLinkZero[0]) # distance between link and torso
+            totalLinkDist += linkDist * linkMass
+            totalMass += linkMass
+        stability = totalLinkDist / totalMass # average distance between each link and torso (small val. = more stable)
+
+        # Determine the fitness based on the gait
+        if gait == 'trotting':
+            fitness = xCoordinateOfLinkZero - 0.5 * abs(yCoordinateOfLinkZero) - 0.1 * stability
+        elif gait == 'pronking':
+            fitness = -yCoordinateOfLinkZero
+        elif gait == 'cantering':
+            fitness = xCoordinateOfLinkZero
+
         f = open("tmp" + str(self.solutionID) + ".txt", "w")
-        f.write(str(xCoordinateOfLinkZero))
+        f.write(str(fitness))
         f.close()
         os.rename("tmp"+str(self.solutionID)+".txt", "fitness"+str(self.solutionID)+".txt")
+
+
 
 

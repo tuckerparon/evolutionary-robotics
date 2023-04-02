@@ -13,6 +13,8 @@ import sys
 
 print(sys.argv)
 
+gait = 'pronking'
+
 # store GUI/DIRECT variable
 directOrGUI = sys.argv[1]
 
@@ -20,6 +22,6 @@ directOrGUI = sys.argv[1]
 solutionID = sys.argv[2]
 
 # start simulation
-simulation = SIMULATION(directOrGUI, solutionID)
+simulation = SIMULATION(directOrGUI, solutionID, gait)
 simulation.run()
 simulation.Get_Fitness()

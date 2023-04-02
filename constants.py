@@ -11,9 +11,9 @@ CS206: Evolutionary Robotics
 import numpy
 
 # front leg angle/motor variables
-amplitude = numpy.pi / 4
-frequency = 20
-phaseOffset = 0
+amplitude = numpy.pi / 4 # canter - pi/6, pronk - pi/2, trot - pi/4
+frequency = 20 # canter - 25, pronk - 15, trot - 20
+phaseOffset = 0 # canter - pi/2, pronk - pi/2, trot 0
 
 # create world variables
 length = 1
@@ -30,10 +30,10 @@ time_steps = 1000
 targetAngles = (numpy.sin(numpy.linspace(0, 2*numpy.pi, time_steps)) * numpy.pi / 4) # scale them by pi/4
 
 # number of generation
-numberOfGenerations = 1
+numberOfGenerations = 10
 
 # population size
-populationSize = 1
+populationSize = 5
 
 # sleep rate
 sleepRate = 1/60
